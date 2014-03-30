@@ -32,7 +32,21 @@ Visit [racattack facebook fanpage](https://www.facebook.com/racattack)
 
 Oracle RAC is a complex technology, once you start learning, and you want to start over or add some new option, this project will allow you automate the OS deploy and OS configuration part, so you can expend time on the feature you want to explore.
 
-> Architecture is the same as the 12c at home book. For simplicity, and looking to the future, some names will been changed.
+> Architecture is the same as the 12c at home book. For simplicity, and looking to the future, some names will be change.
 
 ![Architecture Diagram for RacAttack 12cR1](https://lh4.googleusercontent.com/-LuX7yDQnz54/UzfMY7Qxw3I/AAAAAAAAAFE/EjBFk-qWEtc/s0/2014-03-30_20-48-46.png)
+
+
+## What I will be able to do using this project?
+
+
+### Un-Attended installation of 2 node (or more) 
+
+<iframe width="853" height="480" src="//youtu.be/YZiKEKf2HPo?rel=0&vq=large" frameborder="0" allowfullscreen></iframe>
+
+### Un-Attended addition of a 3rd node to an existing 2 node cluster
+> Box installation, os and and setup of network, disks, etc
+> The Oracle part is left to you
+
+<iframe width="853" height="480" src="//www.youtube.com/watch?v=_5swmO-hzkQ?rel=0&vq=large" frameborder="0" allowfullscreen></iframe>
 
