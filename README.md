@@ -42,7 +42,7 @@ Oracle RAC is a complex technology, once you start learning, and you want to sta
 
 ### Un-Attended installation of 2 node (or more) 
 
-<iframe width="853" height="480" src="//youtu.be/YZiKEKf2HPo?rel=0&vq=large" frameborder="0" allowfullscreen></iframe>
+![Un-Attended installation of 2 node](//youtu.be/YZiKEKf2HPo?rel=0&vq=large)
 
 ### Un-Attended addition of a 3rd node to an existing 2 node cluster
 > Box installation, os and and setup of network, disks, etc
