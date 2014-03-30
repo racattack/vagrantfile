@@ -39,22 +39,14 @@ Oracle RAC is a complex technology, once you start learning, and you want to sta
 
 ## What I will be able to do using this project?
 
-1
-
 [Un-Attended installation of 2 node](//youtu.be/YZiKEKf2HPo?rel=0&vq=large)
 
-2
-![](http://img.youtube.com/vi/YZiKEKf2HPo/0.jpg)
-
-3
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=YZiKEKf2HPo
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=YZiKEKf2HPo?rel=0&vq=large
 " target="_blank"><img src="http://img.youtube.com/vi/YZiKEKf2HPo/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+alt="Un-Attended installation of 2 node" width="240" height="180" border="10" /></a>
 
-Or, in pure Markdown, but losing the image sizing and border:
 
-4
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YZiKEKf2HPo/0.jpg)](http://www.youtube.com/watch?v=YZiKEKf2HPo)
+[![Un-Attended installation of 2 node](http://img.youtube.com/vi/YZiKEKf2HPo/0.jpg)](http://www.youtube.com/watch?v=YZiKEKf2HPo?rel=0&vq=large)
 
 
 
