@@ -1,7 +1,9 @@
-vagrantfile
+racattack vagrantfile
 ===========
 
-This is the racattack repo for the vagrantfile and information to use vagrant with racattack lab
+This is the racattack repo for the vagrant implementation of the labs.
+
+Here you will find the vagrantfile and information to use vagrant with racattack lab
 
 For more information about this repo, check this file.
 
