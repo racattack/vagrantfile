@@ -3,9 +3,19 @@ racattack vagrantfile
 
 This is the racattack repo for the vagrant implementation of the labs.
 
-Here you will find the vagrantfile and information to use vagrant with racattack lab
+Here you will find information how to use [racattack vagrant box](http://vagrantcloud.com/kikitux/oracle65-racattack) for racattack lab
 
-For more information about this repo, check this file.
+For more information about this repo, keep reading.
+
+For this racattack repo, other resources are:
+
+- [wiki for this repo](https://github.com/racattack/vagrantfile/wiki)
+
+- [Issues page for this repo](https://github.com/racattack/vagrantfile/issues)
+
+For more information about racattack, stop by [the racattack webpage](http://racattack.org)
+
+Visit [racattack facebook fanpage](https://www.facebook.com/racattack)
 
 ###This is the Vagrant implementation for [RacAttack 12cR1 Lab](http://racattack.org)
 
@@ -16,13 +26,6 @@ For more information about this repo, check this file.
 >### Vagrant version
 
 ![RacAttack 12cR1 at home](http://upload.wikimedia.org/wikipedia/commons/8/8b/Racattack12c-book-title.png)
-
-
-Other resources are:
-
-- [wiki for this repo](https://github.com/racattack/vagrantfile/wiki)
-
-- [Issues page for this repo](https://github.com/racattack/vagrantfile/issues)
 
 
 ### What will be the benefit of using this Vagrant implementation?
