@@ -1,0 +1,833 @@
+
+
+Full output for vagrant up command for 2 db rac node
+
+alvaros-mini:racattack12cR1 alvarom$ vagrant status | aha -n -b
+
+collabn2 eth1 lanip  :192.168.78.52
+collabn2 eth2 privip :172.16.100.52
+collabn2 dns server role is slave
+on first boot shared disks will be created, this will take some time
+
+collabn1 eth1 lanip  :192.168.78.51
+collabn1 eth2 privip :172.16.100.51
+collabn1 dns server role is master
+Current machine states:
+
+collabn2                  not created (virtualbox)
+collabn1                  not created (virtualbox)
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+alvaros-mini:racattack12cR1 alvarom$ setupssh=true vagrant up | aha -n -b
+
+collabn2 eth1 lanip  :192.168.78.52
+collabn2 eth2 privip :172.16.100.52
+collabn2 dns server role is slave
+on first boot shared disks will be created, this will take some time
+
+collabn1 eth1 lanip  :192.168.78.51
+collabn1 eth2 privip :172.16.100.51
+collabn1 dns server role is master
+Bringing machine 'collabn2' up with 'virtualbox' provider...
+Bringing machine 'collabn1' up with 'virtualbox' provider...
+==&gt; collabn2: Importing base box 'kikitux/oracle65-racattack'...
+==&gt; collabn2: Matching MAC address for NAT networking...
+==&gt; collabn2: Setting the name of the VM: collabn2.1403312148
+==&gt; collabn2: Clearing any previously set network interfaces...
+==&gt; collabn2: Preparing network interfaces based on configuration...
+    collabn2: Adapter 1: nat
+    collabn2: Adapter 2: hostonly
+    collabn2: Adapter 3: hostonly
+==&gt; collabn2: Forwarding ports...
+    collabn2: 22 =&gt; 2222 (adapter 1)
+==&gt; collabn2: Running 'pre-boot' VM customizations...
+==&gt; collabn2: Booting VM...
+==&gt; collabn2: Waiting for machine to boot. This may take a few minutes...
+    collabn2: SSH address: 127.0.0.1:2222
+    collabn2: SSH username: vagrant
+    collabn2: SSH auth method: private key
+    collabn2: Error: Connection timout. Retrying...
+==&gt; collabn2: Machine booted and ready!
+==&gt; collabn2: Checking for guest additions in VM...
+==&gt; collabn2: Setting hostname...
+==&gt; collabn2: Configuring and enabling network interfaces...
+==&gt; collabn2: Mounting shared folders...
+    collabn2: /vagrant =&gt; /Users/alvarom/racattack12cR1
+    collabn2: /media/sf_12cR1 =&gt; /Users/alvarom/racattack12cR1/12cR1
+    collabn2: /media/stagefiles =&gt; /Users/alvarom/racattack12cR1/stagefiles
+==&gt; collabn2: Running provisioner: shell...
+    collabn2: Running: inline script
+Archive:  /media/sf_12cR1/linuxamd64_12c_grid_1of2.zip
+  inflating: /u01/stage/grid/rpm/cvuqdisk-1.0.9-1.rpm
+Setting up Local Package Process
+Examining /u01/stage/grid/rpm/cvuqdisk-1.0.9-1.rpm: cvuqdisk-1.0.9-1.x86_64
+Marking /u01/stage/grid/rpm/cvuqdisk-1.0.9-1.rpm to be installed
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package cvuqdisk.x86_64 0:1.0.9-1 will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package         Arch          Version           Repository                Size
+================================================================================
+Installing:
+ cvuqdisk        x86_64        1.0.9-1           /cvuqdisk-1.0.9-1         12 k
+
+Transaction Summary
+================================================================================
+Install       1 Package(s)
+
+Total size: 12 k
+Installed size: 12 k
+Downloading Packages:
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : cvuqdisk-1.0.9-1.x86_64                                      1/1
+Using default group oinstall to install package
+  Verifying  : cvuqdisk-1.0.9-1.x86_64                                      1/1
+
+Installed:
+  cvuqdisk.x86_64 0:1.0.9-1
+
+Complete!
+==&gt; collabn2: Running provisioner: shell...
+    collabn2: Running: inline script
+overwriting /etc/resolv.conf
+==&gt; collabn2: Running provisioner: shell...
+    collabn2: Running: inline script
+Checking groups for grid and oracle user
+verifying grid user
+id: grid: No such user
+verifying oracle user
+Changing password for user oracle.
+passwd: all authentication tokens updated successfully.
+Changing password for user grid.
+passwd: all authentication tokens updated successfully.
+==&gt; collabn2: Running provisioner: shell...
+    collabn2: Running: inline script
+Changing password for user oracle.
+passwd: all authentication tokens updated successfully.
+Changing password for user grid.
+passwd: all authentication tokens updated successfully.
+Archive:  /media/sf_12cR1/linuxamd64_12c_grid_1of2.zip
+  inflating: /u01/stage/grid/rpm/cvuqdisk-1.0.9-1.rpm
+Archive:  /media/sf_12cR1/linuxamd64_12c_grid_1of2.zip
+  inflating: /u01/stage/grid/sshsetup/sshUserSetup.sh
+cvuqdisk found
+net.ipv4.ip_forward = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.accept_source_route = 0
+kernel.sysrq = 0
+kernel.core_uses_pid = 1
+net.ipv4.tcp_syncookies = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.shmall = 4294967296
+fs.file-max = 6815744
+kernel.sem = 250 32000 100 128
+kernel.shmmni = 4096
+kernel.shmmax = 4398046511104
+net.core.rmem_default = 262144
+net.core.rmem_max = 4194304
+net.core.wmem_default = 262144
+net.core.wmem_max = 1048576
+fs.aio-max-nr = 1048576
+net.ipv4.ip_local_port_range = 9000 65500
+net.ipv4.conf.eth2.rp_filter = 2
+==&gt; collabn2: Running provisioner: shell...
+    collabn2: Running: inline script
+Starting udev: [  OK  ]
+Configuring the Oracle ASM library driver.
+
+This will configure the on-boot properties of the Oracle ASM library
+driver.  The following questions will determine whether the driver is
+loaded on boot and what permissions it will have.  The current values
+will be shown in brackets ('[]').  Hitting &lt;ENTER&gt; without typing an
+answer will keep that current value.  Ctrl-C will abort.
+
+Default user to own the driver interface []: Default group to own the driver interface []: Start Oracle ASM library driver on boot (y/n) [n]: Scan for Oracle ASM disks on boot (y/n) [y]: Writing Oracle ASM library driver configuration: done
+Initializing the Oracle ASMLib driver: [  OK  ]
+Scanning the system for Oracle ASMLib disks: [  OK  ]
+ok: no partition on /dev/sdc
+Marking disk &quot;ASMDISK1&quot; as an ASM disk: [  OK  ]
+ok: no partition on /dev/sdd
+Marking disk &quot;ASMDISK2&quot; as an ASM disk: [  OK  ]
+ok: no partition on /dev/sde
+Marking disk &quot;ASMDISK3&quot; as an ASM disk: [  OK  ]
+ok: no partition on /dev/sdf
+Marking disk &quot;ASMDISK4&quot; as an ASM disk: [  OK  ]
+==&gt; collabn2: Running provisioner: shell...
+    collabn2: Running: inline script
+Stopping named: [  OK  ]
+wrote key file &quot;/etc/rndc.key&quot;
+Stopping named: [  OK  ]
+Starting named: [  OK  ]
+Starting named: named: already running[  OK  ]
+==&gt; collabn1: Importing base box 'kikitux/oracle65-racattack'...
+==&gt; collabn1: Matching MAC address for NAT networking...
+==&gt; collabn1: Setting the name of the VM: collabn1.1403312148
+==&gt; collabn1: Fixed port collision for 22 =&gt; 2222. Now on port 2200.
+==&gt; collabn1: Clearing any previously set network interfaces...
+==&gt; collabn1: Preparing network interfaces based on configuration...
+    collabn1: Adapter 1: nat
+    collabn1: Adapter 2: hostonly
+    collabn1: Adapter 3: hostonly
+==&gt; collabn1: Forwarding ports...
+    collabn1: 22 =&gt; 2200 (adapter 1)
+==&gt; collabn1: Running 'pre-boot' VM customizations...
+==&gt; collabn1: Booting VM...
+==&gt; collabn1: Waiting for machine to boot. This may take a few minutes...
+    collabn1: SSH address: 127.0.0.1:2200
+    collabn1: SSH username: vagrant
+    collabn1: SSH auth method: private key
+    collabn1: Error: Connection timout. Retrying...
+==&gt; collabn1: Machine booted and ready!
+==&gt; collabn1: Checking for guest additions in VM...
+==&gt; collabn1: Setting hostname...
+==&gt; collabn1: Configuring and enabling network interfaces...
+==&gt; collabn1: Mounting shared folders...
+    collabn1: /vagrant =&gt; /Users/alvarom/racattack12cR1
+    collabn1: /media/sf_12cR1 =&gt; /Users/alvarom/racattack12cR1/12cR1
+    collabn1: /media/stagefiles =&gt; /Users/alvarom/racattack12cR1/stagefiles
+==&gt; collabn1: Running provisioner: shell...
+    collabn1: Running: inline script
+Archive:  /media/sf_12cR1/linuxamd64_12c_grid_1of2.zip
+  inflating: /u01/stage/grid/rpm/cvuqdisk-1.0.9-1.rpm
+Setting up Local Package Process
+Examining /u01/stage/grid/rpm/cvuqdisk-1.0.9-1.rpm: cvuqdisk-1.0.9-1.x86_64
+Marking /u01/stage/grid/rpm/cvuqdisk-1.0.9-1.rpm to be installed
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package cvuqdisk.x86_64 0:1.0.9-1 will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package         Arch          Version           Repository                Size
+================================================================================
+Installing:
+ cvuqdisk        x86_64        1.0.9-1           /cvuqdisk-1.0.9-1         12 k
+
+Transaction Summary
+================================================================================
+Install       1 Package(s)
+
+Total size: 12 k
+Installed size: 12 k
+Downloading Packages:
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : cvuqdisk-1.0.9-1.x86_64                                      1/1
+Using default group oinstall to install package
+  Verifying  : cvuqdisk-1.0.9-1.x86_64                                      1/1
+
+Installed:
+  cvuqdisk.x86_64 0:1.0.9-1
+
+Complete!
+==&gt; collabn1: Running provisioner: shell...
+    collabn1: Running: inline script
+overwriting /etc/resolv.conf
+==&gt; collabn1: Running provisioner: shell...
+    collabn1: Running: inline script
+Checking groups for grid and oracle user
+verifying grid user
+id: grid: No such user
+verifying oracle user
+Changing password for user oracle.
+passwd: all authentication tokens updated successfully.
+Changing password for user grid.
+passwd: all authentication tokens updated successfully.
+==&gt; collabn1: Running provisioner: shell...
+    collabn1: Running: inline script
+Changing password for user oracle.
+passwd: all authentication tokens updated successfully.
+Changing password for user grid.
+passwd: all authentication tokens updated successfully.
+Archive:  /media/sf_12cR1/linuxamd64_12c_grid_1of2.zip
+  inflating: /u01/stage/grid/rpm/cvuqdisk-1.0.9-1.rpm
+Archive:  /media/sf_12cR1/linuxamd64_12c_grid_1of2.zip
+  inflating: /u01/stage/grid/sshsetup/sshUserSetup.sh
+cvuqdisk found
+net.ipv4.ip_forward = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.accept_source_route = 0
+kernel.sysrq = 0
+kernel.core_uses_pid = 1
+net.ipv4.tcp_syncookies = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.shmall = 4294967296
+fs.file-max = 6815744
+kernel.sem = 250 32000 100 128
+kernel.shmmni = 4096
+kernel.shmmax = 4398046511104
+net.core.rmem_default = 262144
+net.core.rmem_max = 4194304
+net.core.wmem_default = 262144
+net.core.wmem_max = 1048576
+fs.aio-max-nr = 1048576
+net.ipv4.ip_local_port_range = 9000 65500
+net.ipv4.conf.eth2.rp_filter = 2
+==&gt; collabn1: Running provisioner: shell...
+    collabn1: Running: inline script
+Starting udev: [  OK  ]
+Configuring the Oracle ASM library driver.
+
+This will configure the on-boot properties of the Oracle ASM library
+driver.  The following questions will determine whether the driver is
+loaded on boot and what permissions it will have.  The current values
+will be shown in brackets ('[]').  Hitting &lt;ENTER&gt; without typing an
+answer will keep that current value.  Ctrl-C will abort.
+
+Default user to own the driver interface []: Default group to own the driver interface []: Start Oracle ASM library driver on boot (y/n) [n]: Scan for Oracle ASM disks on boot (y/n) [y]: Writing Oracle ASM library driver configuration: done
+Initializing the Oracle ASMLib driver: [  OK  ]
+Scanning the system for Oracle ASMLib disks: [  OK  ]
+ignoring sdc, partition found on /dev/sdc
+ignoring /dev/oracleasm/disks/ASMDISK1 already exists
+ignoring sdd, partition found on /dev/sdd
+ignoring /dev/oracleasm/disks/ASMDISK2 already exists
+ignoring sde, partition found on /dev/sde
+ignoring /dev/oracleasm/disks/ASMDISK3 already exists
+ignoring sdf, partition found on /dev/sdf
+ignoring /dev/oracleasm/disks/ASMDISK4 already exists
+==&gt; collabn1: Running provisioner: shell...
+    collabn1: Running: inline script
+wrote key file &quot;/etc/rndc.key&quot;
+Stopping named: [  OK  ]
+Starting named: [  OK  ]
+==&gt; collabn1: Running provisioner: shell...
+    collabn1: Running: inline script
+spawn /u01/stage/grid/sshsetup/sshUserSetup.sh -user root -hosts collabn2 collabn1 -noPromptPassphrase -advanced
+The output of this script is also logged into /tmp/sshUserSetup_2014-03-31-08-52-30.log
+Hosts are collabn2 collabn1
+user is root
+Platform:- Linux
+Checking if the remote hosts are reachable
+PING collabn2.racattack (192.168.78.52) 56(84) bytes of data.
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=1 ttl=64 time=0.507 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=2 ttl=64 time=0.620 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=3 ttl=64 time=0.461 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=4 ttl=64 time=0.625 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=5 ttl=64 time=0.619 ms
+
+--- collabn2.racattack ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4009ms
+rtt min/avg/max/mdev = 0.461/0.566/0.625/0.072 ms
+PING collabn1.racattack (127.0.0.1) 56(84) bytes of data.
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=1 ttl=64 time=0.073 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=2 ttl=64 time=0.052 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=3 ttl=64 time=0.054 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=4 ttl=64 time=0.039 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=5 ttl=64 time=0.062 ms
+
+--- collabn1.racattack ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4001ms
+rtt min/avg/max/mdev = 0.039/0.056/0.073/0.011 ms
+Remote host reachability check succeeded.
+The following hosts are reachable: collabn2 collabn1.
+The following hosts are not reachable: .
+All hosts are reachable. Proceeding further...
+firsthost collabn2
+numhosts 2
+The script will setup SSH connectivity from the host collabn1.racattack to all
+the remote hosts. After the script is executed, the user can use SSH to run
+commands on the remote hosts or copy files between this host collabn1.racattack
+and the remote hosts without being prompted for passwords or confirmations.
+
+NOTE 1:
+As part of the setup procedure, this script will use ssh and scp to copy
+files between the local host and the remote hosts. Since the script does not
+store passwords, you may be prompted for the passwords during the execution of
+the script whenever ssh or scp is invoked.
+
+NOTE 2:
+AS PER SSH REQUIREMENTS, THIS SCRIPT WILL SECURE THE USER HOME DIRECTORY
+AND THE .ssh DIRECTORY BY REVOKING GROUP AND WORLD WRITE PRIVILEDGES TO THESE
+directories.
+
+Do you want to continue and let the script make the above mentioned changes (yes/no)?
+yes
+
+The user chose yes
+User chose to skip passphrase related questions.
+Creating .ssh directory on local host, if not present already
+Creating authorized_keys file on local host
+Changing permissions on authorized_keys to 644 on local host
+Creating known_hosts file on local host
+Changing permissions on known_hosts to 644 on local host
+Creating config file on local host
+If a config file exists already at /root/.ssh/config, it would be backed up to /root/.ssh/config.backup.
+Removing old private/public keys on local host
+Running SSH keygen on local host with empty passphrase
+Generating public/private rsa key pair.
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+25:ab:88:86:c2:42:9c:43:e1:91:a7:2b:7a:d0:9d:dd root@collabn1.racattack
+The key's randomart image is:
++--[ RSA 1024]----+
+| o.              |
+|..o.             |
+| oo     . .      |
+|o..      +       |
+| *.. o .S        |
+|=oo.o...E        |
+|*oo . .          |
+|+..              |
+| .               |
++-----------------+
+Creating .ssh directory and setting permissions on remote host collabn2
+THE SCRIPT WOULD ALSO BE REVOKING WRITE PERMISSIONS FOR group AND others ON THE HOME DIRECTORY FOR root. THIS IS AN SSH REQUIREMENT.
+The script would create ~root/.ssh/config file on remote host collabn2. If a config file exists already at ~root/.ssh/config, it would be backed up to ~root/.ssh/config.backup.
+The user may be prompted for a password here since the script would be running SSH on host collabn2.
+Warning: Permanently added 'collabn2,192.168.78.52' (RSA) to the list of known hosts.
+root@collabn2's password:
+Done with creating .ssh directory and setting permissions on remote host collabn2.
+Creating .ssh directory and setting permissions on remote host collabn1
+THE SCRIPT WOULD ALSO BE REVOKING WRITE PERMISSIONS FOR group AND others ON THE HOME DIRECTORY FOR root. THIS IS AN SSH REQUIREMENT.
+The script would create ~root/.ssh/config file on remote host collabn1. If a config file exists already at ~root/.ssh/config, it would be backed up to ~root/.ssh/config.backup.
+The user may be prompted for a password here since the script would be running SSH on host collabn1.
+Warning: Permanently added 'collabn1' (RSA) to the list of known hosts.
+root@collabn1's password:
+Done with creating .ssh directory and setting permissions on remote host collabn1.
+Copying local host public key to the remote host collabn2
+The user may be prompted for a password or passphrase here since the script would be using SCP for host collabn2.
+root@collabn2's password:
+Done copying local host public key to the remote host collabn2
+Copying local host public key to the remote host collabn1
+The user may be prompted for a password or passphrase here since the script would be using SCP for host collabn1.
+root@collabn1's password:
+Done copying local host public key to the remote host collabn1
+Creating keys on remote host collabn2 if they do not exist already. This is required to setup SSH on host collabn2.
+Generating public/private rsa key pair.
+Your identification has been saved in .ssh/id_rsa.
+Your public key has been saved in .ssh/id_rsa.pub.
+The key fingerprint is:
+9a:da:c8:d8:5b:14:a8:6f:c0:df:d4:76:76:a3:d1:ad root@collabn2.racattack
+The key's randomart image is:
++--[ RSA 1024]----+
+|                 |
+|     .           |
+|    . .          |
+| . .   o   . .   |
+|  +   o S + + .  |
+|   + + + o + o   |
+|    + =   . E    |
+|   = =           |
+|  . *..          |
++-----------------+
+Creating keys on remote host collabn1 if they do not exist already. This is required to setup SSH on host collabn1.
+
+Updating authorized_keys file on remote host collabn2
+Updating known_hosts file on remote host collabn2
+Updating authorized_keys file on remote host collabn1
+Updating known_hosts file on remote host collabn1
+cat: /root/.ssh/known_hosts.tmp: No such file or directory
+cat: /root/.ssh/authorized_keys.tmp: No such file or directory
+SSH setup is complete.
+
+------------------------------------------------------------------------
+Verifying SSH setup
+===================
+The script will now run the date command on the remote nodes using ssh
+to verify if ssh is setup correctly. IF THE SETUP IS CORRECTLY SETUP,
+THERE SHOULD BE NO OUTPUT OTHER THAN THE DATE AND SSH SHOULD NOT ASK FOR
+PASSWORDS. If you see any output other than date or are prompted for the
+password, ssh is not setup correctly and you will need to resolve the
+issue and set up ssh again.
+The possible causes for failure could be:
+1. The server settings in /etc/ssh/sshd_config file do not allow ssh
+for user root.
+2. The server may have disabled public key based authentication.
+3. The client public key on the server may be outdated.
+4. ~root or ~root/.ssh on the remote host may not be owned by root.
+5. User may not have passed -shared option for shared remote users or
+may be passing the -shared option for non-shared remote users.
+6. If there is output in addition to the date, but no password is asked,
+it may be a security alert shown as part of company policy. Append the
+additional text to the &lt;OMS HOME&gt;/sysman/prov/resources/ignoreMessages.txt file.
+------------------------------------------------------------------------
+--collabn2:--
+Running /usr/bin/ssh -x -l root collabn2 date to verify SSH connectivity has been setup from local host to collabn2.
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL. Please note that being prompted for a passphrase may be OK but being prompted for a password is ERROR.
+Mon Mar 31 08:52:39 UTC 2014
+------------------------------------------------------------------------
+--collabn1:--
+Running /usr/bin/ssh -x -l root collabn1 date to verify SSH connectivity has been setup from local host to collabn1.
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL. Please note that being prompted for a passphrase may be OK but being prompted for a password is ERROR.
+Mon Mar 31 08:52:40 UTC 2014
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Verifying SSH connectivity has been setup from collabn2 to collabn2
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL.
+Mon Mar 31 08:52:40 UTC 2014
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Verifying SSH connectivity has been setup from collabn2 to collabn1
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL.
+Warning: Permanently added the RSA host key for IP address '192.168.78.51' to the list of known hosts.
+Mon Mar 31 08:52:41 UTC 2014
+------------------------------------------------------------------------
+-Verification from complete-
+SSH verification complete.
+finished
+spawn /u01/stage/grid/sshsetup/sshUserSetup.sh -user grid -hosts collabn2 collabn1 -noPromptPassphrase -advanced
+The output of this script is also logged into /tmp/sshUserSetup_2014-03-31-08-52-41.log
+Hosts are collabn2 collabn1
+user is grid
+Platform:- Linux
+Checking if the remote hosts are reachable
+PING collabn2.racattack (192.168.78.52) 56(84) bytes of data.
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=1 ttl=64 time=0.329 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=2 ttl=64 time=0.607 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=3 ttl=64 time=0.401 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=4 ttl=64 time=0.605 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=5 ttl=64 time=0.388 ms
+
+--- collabn2.racattack ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4032ms
+rtt min/avg/max/mdev = 0.329/0.466/0.607/0.116 ms
+PING collabn1.racattack (127.0.0.1) 56(84) bytes of data.
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=1 ttl=64 time=0.038 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=2 ttl=64 time=0.156 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=3 ttl=64 time=0.050 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=4 ttl=64 time=0.054 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=5 ttl=64 time=0.088 ms
+
+--- collabn1.racattack ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4028ms
+rtt min/avg/max/mdev = 0.038/0.077/0.156/0.043 ms
+Remote host reachability check succeeded.
+The following hosts are reachable: collabn2 collabn1.
+The following hosts are not reachable: .
+All hosts are reachable. Proceeding further...
+firsthost collabn2
+numhosts 2
+The script will setup SSH connectivity from the host collabn1.racattack to all
+the remote hosts. After the script is executed, the user can use SSH to run
+commands on the remote hosts or copy files between this host collabn1.racattack
+and the remote hosts without being prompted for passwords or confirmations.
+
+NOTE 1:
+As part of the setup procedure, this script will use ssh and scp to copy
+files between the local host and the remote hosts. Since the script does not
+store passwords, you may be prompted for the passwords during the execution of
+the script whenever ssh or scp is invoked.
+
+NOTE 2:
+AS PER SSH REQUIREMENTS, THIS SCRIPT WILL SECURE THE USER HOME DIRECTORY
+AND THE .ssh DIRECTORY BY REVOKING GROUP AND WORLD WRITE PRIVILEDGES TO THESE
+directories.
+
+Do you want to continue and let the script make the above mentioned changes (yes/no)?
+yes
+
+The user chose yes
+User chose to skip passphrase related questions.
+Creating .ssh directory on local host, if not present already
+Creating authorized_keys file on local host
+Changing permissions on authorized_keys to 644 on local host
+Creating known_hosts file on local host
+Changing permissions on known_hosts to 644 on local host
+Creating config file on local host
+If a config file exists already at /home/grid/.ssh/config, it would be backed up to /home/grid/.ssh/config.backup.
+Removing old private/public keys on local host
+Running SSH keygen on local host with empty passphrase
+Generating public/private rsa key pair.
+Your identification has been saved in /home/grid/.ssh/id_rsa.
+Your public key has been saved in /home/grid/.ssh/id_rsa.pub.
+The key fingerprint is:
+76:31:89:06:4d:49:d8:48:2e:1d:6a:8a:8e:74:5a:ba grid@collabn1.racattack
+The key's randomart image is:
++--[ RSA 1024]----+
+|     .+Bo.       |
+|     +oo+. .     |
+|    + o o +      |
+| . o . .   o     |
+|...o    S .      |
+|+ =    . .       |
+|.+               |
+|  .              |
+| E               |
++-----------------+
+Creating .ssh directory and setting permissions on remote host collabn2
+THE SCRIPT WOULD ALSO BE REVOKING WRITE PERMISSIONS FOR group AND others ON THE HOME DIRECTORY FOR grid. THIS IS AN SSH REQUIREMENT.
+The script would create ~grid/.ssh/config file on remote host collabn2. If a config file exists already at ~grid/.ssh/config, it would be backed up to ~grid/.ssh/config.backup.
+The user may be prompted for a password here since the script would be running SSH on host collabn2.
+Warning: Permanently added 'collabn2,192.168.78.52' (RSA) to the list of known hosts.
+grid@collabn2's password:
+Done with creating .ssh directory and setting permissions on remote host collabn2.
+Creating .ssh directory and setting permissions on remote host collabn1
+THE SCRIPT WOULD ALSO BE REVOKING WRITE PERMISSIONS FOR group AND others ON THE HOME DIRECTORY FOR grid. THIS IS AN SSH REQUIREMENT.
+The script would create ~grid/.ssh/config file on remote host collabn1. If a config file exists already at ~grid/.ssh/config, it would be backed up to ~grid/.ssh/config.backup.
+The user may be prompted for a password here since the script would be running SSH on host collabn1.
+Warning: Permanently added 'collabn1' (RSA) to the list of known hosts.
+grid@collabn1's password:
+Done with creating .ssh directory and setting permissions on remote host collabn1.
+Copying local host public key to the remote host collabn2
+The user may be prompted for a password or passphrase here since the script would be using SCP for host collabn2.
+grid@collabn2's password:
+Done copying local host public key to the remote host collabn2
+Copying local host public key to the remote host collabn1
+The user may be prompted for a password or passphrase here since the script would be using SCP for host collabn1.
+grid@collabn1's password:
+Done copying local host public key to the remote host collabn1
+Creating keys on remote host collabn2 if they do not exist already. This is required to setup SSH on host collabn2.
+Generating public/private rsa key pair.
+Your identification has been saved in .ssh/id_rsa.
+Your public key has been saved in .ssh/id_rsa.pub.
+The key fingerprint is:
+68:c9:c6:3e:6e:5c:16:8b:6b:72:c3:04:8b:82:7e:cb grid@collabn2.racattack
+The key's randomart image is:
++--[ RSA 1024]----+
+|                 |
+|                 |
+|                 |
+|    .o o.        |
+|.  . oB.So       |
+|o . .+o +        |
+|..   +o+         |
+| .....O.         |
+|  .E.=..         |
++-----------------+
+Creating keys on remote host collabn1 if they do not exist already. This is required to setup SSH on host collabn1.
+
+Updating authorized_keys file on remote host collabn2
+Updating known_hosts file on remote host collabn2
+Updating authorized_keys file on remote host collabn1
+Updating known_hosts file on remote host collabn1
+cat: /home/grid/.ssh/known_hosts.tmp: No such file or directory
+cat: /home/grid/.ssh/authorized_keys.tmp: No such file or directory
+SSH setup is complete.
+
+------------------------------------------------------------------------
+Verifying SSH setup
+===================
+The script will now run the date command on the remote nodes using ssh
+to verify if ssh is setup correctly. IF THE SETUP IS CORRECTLY SETUP,
+THERE SHOULD BE NO OUTPUT OTHER THAN THE DATE AND SSH SHOULD NOT ASK FOR
+PASSWORDS. If you see any output other than date or are prompted for the
+password, ssh is not setup correctly and you will need to resolve the
+issue and set up ssh again.
+The possible causes for failure could be:
+1. The server settings in /etc/ssh/sshd_config file do not allow ssh
+for user grid.
+2. The server may have disabled public key based authentication.
+3. The client public key on the server may be outdated.
+4. ~grid or ~grid/.ssh on the remote host may not be owned by grid.
+5. User may not have passed -shared option for shared remote users or
+may be passing the -shared option for non-shared remote users.
+6. If there is output in addition to the date, but no password is asked,
+it may be a security alert shown as part of company policy. Append the
+additional text to the &lt;OMS HOME&gt;/sysman/prov/resources/ignoreMessages.txt file.
+------------------------------------------------------------------------
+--collabn2:--
+Running /usr/bin/ssh -x -l grid collabn2 date to verify SSH connectivity has been setup from local host to collabn2.
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL. Please note that being prompted for a passphrase may be OK but being prompted for a password is ERROR.
+Mon Mar 31 08:52:51 UTC 2014
+------------------------------------------------------------------------
+--collabn1:--
+Running /usr/bin/ssh -x -l grid collabn1 date to verify SSH connectivity has been setup from local host to collabn1.
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL. Please note that being prompted for a passphrase may be OK but being prompted for a password is ERROR.
+Mon Mar 31 08:52:51 UTC 2014
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Verifying SSH connectivity has been setup from collabn2 to collabn2
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL.
+Mon Mar 31 08:52:51 UTC 2014
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Verifying SSH connectivity has been setup from collabn2 to collabn1
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL.
+Warning: Permanently added the RSA host key for IP address '192.168.78.51' to the list of known hosts.
+Mon Mar 31 08:52:52 UTC 2014
+------------------------------------------------------------------------
+-Verification from complete-
+SSH verification complete.
+finished
+spawn /u01/stage/grid/sshsetup/sshUserSetup.sh -user oracle -hosts collabn2 collabn1 -noPromptPassphrase -advanced
+The output of this script is also logged into /tmp/sshUserSetup_2014-03-31-08-52-52.log
+Hosts are collabn2 collabn1
+user is oracle
+Platform:- Linux
+Checking if the remote hosts are reachable
+PING collabn2.racattack (192.168.78.52) 56(84) bytes of data.
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=1 ttl=64 time=0.552 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=2 ttl=64 time=0.632 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=3 ttl=64 time=0.702 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=4 ttl=64 time=0.526 ms
+64 bytes from collabn2.racattack (192.168.78.52): icmp_seq=5 ttl=64 time=0.669 ms
+
+--- collabn2.racattack ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4055ms
+rtt min/avg/max/mdev = 0.526/0.616/0.702/0.069 ms
+PING collabn1.racattack (127.0.0.1) 56(84) bytes of data.
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=1 ttl=64 time=0.036 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=2 ttl=64 time=0.052 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=3 ttl=64 time=0.057 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=4 ttl=64 time=0.059 ms
+64 bytes from collabn1.racattack (127.0.0.1): icmp_seq=5 ttl=64 time=0.050 ms
+
+--- collabn1.racattack ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4008ms
+rtt min/avg/max/mdev = 0.036/0.050/0.059/0.012 ms
+Remote host reachability check succeeded.
+The following hosts are reachable: collabn2 collabn1.
+The following hosts are not reachable: .
+All hosts are reachable. Proceeding further...
+firsthost collabn2
+numhosts 2
+The script will setup SSH connectivity from the host collabn1.racattack to all
+the remote hosts. After the script is executed, the user can use SSH to run
+commands on the remote hosts or copy files between this host collabn1.racattack
+and the remote hosts without being prompted for passwords or confirmations.
+
+NOTE 1:
+As part of the setup procedure, this script will use ssh and scp to copy
+files between the local host and the remote hosts. Since the script does not
+store passwords, you may be prompted for the passwords during the execution of
+the script whenever ssh or scp is invoked.
+
+NOTE 2:
+AS PER SSH REQUIREMENTS, THIS SCRIPT WILL SECURE THE USER HOME DIRECTORY
+AND THE .ssh DIRECTORY BY REVOKING GROUP AND WORLD WRITE PRIVILEDGES TO THESE
+directories.
+
+Do you want to continue and let the script make the above mentioned changes (yes/no)?
+yes
+
+The user chose yes
+User chose to skip passphrase related questions.
+Creating .ssh directory on local host, if not present already
+Creating authorized_keys file on local host
+Changing permissions on authorized_keys to 644 on local host
+Creating known_hosts file on local host
+Changing permissions on known_hosts to 644 on local host
+Creating config file on local host
+If a config file exists already at /home/oracle/.ssh/config, it would be backed up to /home/oracle/.ssh/config.backup.
+Removing old private/public keys on local host
+Running SSH keygen on local host with empty passphrase
+Generating public/private rsa key pair.
+Your identification has been saved in /home/oracle/.ssh/id_rsa.
+Your public key has been saved in /home/oracle/.ssh/id_rsa.pub.
+The key fingerprint is:
+9e:f2:ad:4e:31:53:0b:2d:9d:cc:57:29:de:24:43:c4 oracle@collabn1.racattack
+The key's randomart image is:
++--[ RSA 1024]----+
+|           +o .. |
+|         = .E.o  |
+|        o B..*   |
+|         + o. .  |
+|        S .      |
+|       . =       |
+|      . +        |
+|       + .       |
+|       .+..      |
++-----------------+
+Creating .ssh directory and setting permissions on remote host collabn2
+THE SCRIPT WOULD ALSO BE REVOKING WRITE PERMISSIONS FOR group AND others ON THE HOME DIRECTORY FOR oracle. THIS IS AN SSH REQUIREMENT.
+The script would create ~oracle/.ssh/config file on remote host collabn2. If a config file exists already at ~oracle/.ssh/config, it would be backed up to ~oracle/.ssh/config.backup.
+The user may be prompted for a password here since the script would be running SSH on host collabn2.
+Warning: Permanently added 'collabn2,192.168.78.52' (RSA) to the list of known hosts.
+oracle@collabn2's password:
+Done with creating .ssh directory and setting permissions on remote host collabn2.
+Creating .ssh directory and setting permissions on remote host collabn1
+THE SCRIPT WOULD ALSO BE REVOKING WRITE PERMISSIONS FOR group AND others ON THE HOME DIRECTORY FOR oracle. THIS IS AN SSH REQUIREMENT.
+The script would create ~oracle/.ssh/config file on remote host collabn1. If a config file exists already at ~oracle/.ssh/config, it would be backed up to ~oracle/.ssh/config.backup.
+The user may be prompted for a password here since the script would be running SSH on host collabn1.
+Warning: Permanently added 'collabn1' (RSA) to the list of known hosts.
+oracle@collabn1's password:
+Done with creating .ssh directory and setting permissions on remote host collabn1.
+Copying local host public key to the remote host collabn2
+The user may be prompted for a password or passphrase here since the script would be using SCP for host collabn2.
+oracle@collabn2's password:
+Done copying local host public key to the remote host collabn2
+Copying local host public key to the remote host collabn1
+The user may be prompted for a password or passphrase here since the script would be using SCP for host collabn1.
+oracle@collabn1's password:
+Done copying local host public key to the remote host collabn1
+Creating keys on remote host collabn2 if they do not exist already. This is required to setup SSH on host collabn2.
+Generating public/private rsa key pair.
+Your identification has been saved in .ssh/id_rsa.
+Your public key has been saved in .ssh/id_rsa.pub.
+The key fingerprint is:
+72:44:4a:0f:b7:a7:41:bd:c5:7a:23:2e:1b:cd:9e:d5 oracle@collabn2.racattack
+The key's randomart image is:
++--[ RSA 1024]----+
+|      o +. .     |
+|     . B .. o    |
+|      . = .+     |
+|       . ++ o    |
+|      . S+ o o   |
+|       oo + . E  |
+|         = o     |
+|        . o      |
+|                 |
++-----------------+
+Creating keys on remote host collabn1 if they do not exist already. This is required to setup SSH on host collabn1.
+
+Updating authorized_keys file on remote host collabn2
+Updating known_hosts file on remote host collabn2
+Updating authorized_keys file on remote host collabn1
+Updating known_hosts file on remote host collabn1
+cat: /home/oracle/.ssh/known_hosts.tmp: No such file or directory
+cat: /home/oracle/.ssh/authorized_keys.tmp: No such file or directory
+SSH setup is complete.
+
+------------------------------------------------------------------------
+Verifying SSH setup
+===================
+The script will now run the date command on the remote nodes using ssh
+to verify if ssh is setup correctly. IF THE SETUP IS CORRECTLY SETUP,
+THERE SHOULD BE NO OUTPUT OTHER THAN THE DATE AND SSH SHOULD NOT ASK FOR
+PASSWORDS. If you see any output other than date or are prompted for the
+password, ssh is not setup correctly and you will need to resolve the
+issue and set up ssh again.
+The possible causes for failure could be:
+1. The server settings in /etc/ssh/sshd_config file do not allow ssh
+for user oracle.
+2. The server may have disabled public key based authentication.
+3. The client public key on the server may be outdated.
+4. ~oracle or ~oracle/.ssh on the remote host may not be owned by oracle.
+5. User may not have passed -shared option for shared remote users or
+may be passing the -shared option for non-shared remote users.
+6. If there is output in addition to the date, but no password is asked,
+it may be a security alert shown as part of company policy. Append the
+additional text to the &lt;OMS HOME&gt;/sysman/prov/resources/ignoreMessages.txt file.
+------------------------------------------------------------------------
+--collabn2:--
+Running /usr/bin/ssh -x -l oracle collabn2 date to verify SSH connectivity has been setup from local host to collabn2.
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL. Please note that being prompted for a passphrase may be OK but being prompted for a password is ERROR.
+Mon Mar 31 08:53:02 UTC 2014
+------------------------------------------------------------------------
+--collabn1:--
+Running /usr/bin/ssh -x -l oracle collabn1 date to verify SSH connectivity has been setup from local host to collabn1.
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL. Please note that being prompted for a passphrase may be OK but being prompted for a password is ERROR.
+Mon Mar 31 08:53:03 UTC 2014
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Verifying SSH connectivity has been setup from collabn2 to collabn2
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL.
+Mon Mar 31 08:53:03 UTC 2014
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Verifying SSH connectivity has been setup from collabn2 to collabn1
+IF YOU SEE ANY OTHER OUTPUT BESIDES THE OUTPUT OF THE DATE COMMAND OR IF YOU ARE PROMPTED FOR A PASSWORD HERE, IT MEANS SSH SETUP HAS NOT BEEN SUCCESSFUL.
+Warning: Permanently added the RSA host key for IP address '192.168.78.51' to the list of known hosts.
+Mon Mar 31 08:53:03 UTC 2014
+------------------------------------------------------------------------
+-Verification from complete-
+SSH verification complete.
+finished
+alvaros-mini:racattack12cR1 alvarom$
+
