@@ -1,0 +1,5 @@
+KERNEL=="oracleasm/disks/*", OWNER="grid", GROUP="asmadmin", MODE="0660"
+KERNEL=="sdc1", SYMLINK="asmdisk1", OWNER="grid", GROUP="asmadmin", MODE="0660"
+KERNEL=="sdd1", SYMLINK="asmdisk2", OWNER="grid", GROUP="asmadmin", MODE="0660"
+KERNEL=="sde1", SYMLINK="asmdisk3", OWNER="grid", GROUP="asmadmin", MODE="0660"
+KERNEL=="sdf1", SYMLINK="asmdisk4", OWNER="grid", GROUP="asmadmin", MODE="0660"

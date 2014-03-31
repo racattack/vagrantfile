@@ -1,0 +1,24 @@
+#!/usr/bin/expect -f
+set timeout 30
+
+set user [lindex $argv 0]
+set pass [lindex $argv 1]
+
+set server [lrange $argv 2 end]
+
+spawn /u01/stage/grid/sshsetup/sshUserSetup.sh -user $user -hosts "$server" -noPromptPassphrase -advanced
+
+expect "Do you want to continue and let the script make the above mentioned changes (yes/no)?" {
+    send "yes\n"
+  }
+
+expect {
+  "password:" {
+    send "$pass\n"
+    exp_continue
+  }
+  "SSH verification complete."{
+  } 
+}
+
+send_user "finished\n"
