@@ -7,9 +7,7 @@ Here you will find information how to use [racattack vagrant box](http://vagrant
 
 For more information about this repo, keep reading.
 
-For this racattack repo, other resources are:
-
-- [wiki for this repo](https://github.com/racattack/vagrantfile/wiki)
+In the meantime this project get documented, feel free to open an issue if you will like to share something with us.
 
 - [Issues page for this repo](https://github.com/racattack/vagrantfile/issues)
 
@@ -26,7 +24,6 @@ Visit [racattack facebook fanpage](https://www.facebook.com/racattack)
 >### Vagrant version
 
 ![RacAttack 12cR1 at home](http://upload.wikimedia.org/wikipedia/commons/8/8b/Racattack12c-book-title.png)
-
 
 ### What will be the benefit of using this Vagrant implementation?
 
