@@ -86,8 +86,8 @@ chown -R    grid:oinstall       /u01/app/grid
 chown -R    grid:oinstall       /u01/app/oraInventory
 chown -R    oracle:oinstall     /home/oracle
 chown -R    grid:oinstall       /home/grid
-chmod       ug+rw               /u01
-chmod -R    ug+rw               /u01/app
+chmod -R    ug+rw               /u01
+[ -d /u01/stage/grid ] && chown -R grid:oinstall /u01/stage/grid
 
 #hostname need to be on /etc/hosts
 
