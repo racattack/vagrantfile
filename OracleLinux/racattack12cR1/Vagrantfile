@@ -4,20 +4,36 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+#############################
 ## 20140331
 ## Alvaro Miranda
 ## http://kikitux.net
 ## alvaro at kikitux.net
-
-#######################################
+#############################
+##### END CUSTOMIZATION #####
+#############################
 #define number of nodes
 NUM_APPLICATION 	= 0
 NUM_LEAF_INSTANCES	= 0
 NUM_DB_INSTANCES	= 2
+#
+#define memory for each type of node in MBytes
+#
+#for leaf nodes, the minimun can be  2200, otherwise pre-check will fail for
+#automatic ulimit values calculated based on ram
+#
+#for database nodes, the minimum suggested is 3072
+#
+MEMORY_APPLICATION 	= 1500
+MEMORY_LEAF_INSTANCES	= 2200
+MEMORY_DB_INSTANCES	= 3072
 #        
 #size of shared disk in GB
 size_file_to_dbdisk	= 5
-#######################################
+#
+#############################
+##### END CUSTOMIZATION #####
+#############################
 
 nodes=""
 (1..NUM_APPLICATION).each do |i|
@@ -94,7 +110,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puts vm_name + " eth1 lanip  :" + lanip
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
-        vb.customize ["modifyvm", :id, "--memory", "1500"]
+        vb.customize ["modifyvm", :id, "--memory", MEMORY_APPLICATION]
         vb.customize ["modifyvm", :id, "--cpus", "2"]
       end
       config.vm.network :private_network, ip: lanip
@@ -113,7 +129,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puts vm_name + " eth2 privip :" + privip
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
-        vb.customize ["modifyvm", :id, "--memory", "2200"]
+        vb.customize ["modifyvm", :id, "--memory", MEMORY_LEAF_INSTANCES]
         vb.customize ["modifyvm", :id, "--cpus", "2"]
       end
       config.vm.network :private_network, ip: lanip
@@ -133,7 +149,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puts vm_name + " eth2 privip :" + privip
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
-        vb.customize ["modifyvm", :id, "--memory", "3072"]
+        vb.customize ["modifyvm", :id, "--memory", MEMORY_DB_INSTANCES]
         vb.customize ["modifyvm", :id, "--cpus", "2"]
         #first shared disk port
         port=2
