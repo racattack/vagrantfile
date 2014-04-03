@@ -68,7 +68,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "kikitux/oracle65-racattack"
+  config.vm.box = "racattack/oracle65"
 
   ## Virtualbox modifications
   ## we first setup memory and cpu
@@ -156,7 +156,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #how many shared disk
         ["1","2","3","4"].each do |disk|
           file_to_dbdisk = "racattack-shared-disk#{disk}.vdi"
-          unless File.exist?(file_to_dbdisk)
+          if !File.exist?(file_to_dbdisk) and NUM_DB_INSTANCES==i
             unless give_info==false
               puts "on first boot shared disks will be created, this will take some time"
               give_info=false
