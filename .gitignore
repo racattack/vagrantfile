@@ -1,3 +1,4 @@
 *.vdi
 .vagrant
 vblame
+linuxamd64_12c_*.zip
