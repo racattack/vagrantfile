@@ -48,12 +48,12 @@ Oracle RAC is a complex technology, once you start learning, and you want to sta
 
 [![Un-Attended addition of a 3rd node to an existing 2 node cluster](http://img.youtube.com/vi/YZiKEKf2HPo/0.jpg)](http://www.youtube.com/watch?v=_5swmO-hzkQ?rel=0&vq=large)
 
-- [Un-Attended addition of a 3rd leaf node to an existing 2 node flex cluster](//youtu.be/7g-_h84HTIY?rel=0&vq=large)
+- [Un-Attended addition of 3 new leaf nodes to an existing 2 node flex cluster](//youtu.be/7g-_h84HTIY?rel=0&vq=large)
 
 > Box installation, os and and setup of network, disks, etc
 > The Oracle part is left to you
 
-[![Un-Attended addition of a 3rd node to an existing 2 node cluster](http://img.youtube.com/vi/7g-_h84HTIY/0.jpg)](http://www.youtube.com/watch?v=7g-_h84HTIY?rel=0&vq=large)
+[![Un-Attended addition of a 3 new leaf nodes to an existing 2 node cluster](http://img.youtube.com/vi/7g-_h84HTIY/0.jpg)](http://www.youtube.com/watch?v=7g-_h84HTIY?rel=0&vq=large)
 
 Thanks for reading,
 [Alvaro](http://github.com/kikitux)
