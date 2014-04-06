@@ -25,7 +25,7 @@ NUM_DB_INSTANCES	= 2
 #for database nodes, the minimum suggested is 3072
 #
 MEMORY_APPLICATION 	= 1500
-MEMORY_LEAF_INSTANCES	= 2200
+MEMORY_LEAF_INSTANCES	= 2300
 MEMORY_DB_INSTANCES	= 3072
 #        
 #size of shared disk in GB

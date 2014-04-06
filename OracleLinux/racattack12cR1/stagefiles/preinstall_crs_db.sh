@@ -46,9 +46,19 @@ fi
 
 sed -i -e 's/Defaults\s*requiretty$/#Defaults\trequiretty/' /etc/sudoers
 
+cp /etc/fstab /etc/fstab.ori
+
+#per Oracle manual, we require add rw,exec to /dev/shm
+#and will adjust size to 90% of ram
+
+egrep -v '/dev/shm' /etc/fstab.ori > /etc/fstab
+awk '{ $1="MemTotal:" };END{printf "tmpfs  /dev/shm  tmpfs  rw,exec,size=%.0fm,defaults  0 0\n", $2/1024*0.9}' /proc/meminfo >> /etc/fstab 
+
+mountpoint /dev/shm 2>&1 >/dev/null  && mount -o remount,rw,exec /dev/shm || mount /dev/shm
+
 cp /etc/sysctl.conf /etc/sysctl.conf.ori
 
-grep -v net.bridge.bridge-nf-call /etc/sysctl.conf.ori > /etc/sysctl.conf
+egrep -v "net.bridge.bridge-nf-call" /etc/sysctl.conf.ori > /etc/sysctl.conf
 
 [ $1 ] && ARG=$1 || ARG="empty"
 
@@ -67,15 +77,15 @@ if [ $ARG == "rac" ] ;then
   if [ $? -eq 0 ];then
     RP_ETH2="net.ipv4.conf.eth2.rp_filter=2"
     grep $RP_ETH2 /etc/sysctl.conf 2>/dev/null || echo $RP_ETH2 >> /etc/sysctl.conf
-    sysctl -p
   fi
   ifconfig eth3 2>/dev/null >/dev/null
   if [ $? -eq 0 ];then
     RP_ETH3="net.ipv4.conf.eth3.rp_filter=2"
     grep $RP_ETH3 /etc/sysctl.conf 2>/dev/null || echo $RP_ETH3 >> /etc/sysctl.conf
-    sysctl -p
   fi
 fi
+
+sysctl -p
 
 mkdir -p /u01/app/grid /u01/app/oraInventory /u01/app/12.1.0.1/grid /u01/app/oracle/product/12.1.0.1/dbhome_1
 chown       oracle:oinstall     /u01
