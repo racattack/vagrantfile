@@ -31,7 +31,7 @@ racattack               IN SOA  collabn1.racattack. hostmaster.racattack. (
                                 )
                         NS      collabn1.racattack.
                         NS      collabn2.racattack.
-collabn.racattack.      NS      collabn-cluster-gns
+collabn.racattack.      NS      collabn-cluster-gns.racattack.
 $ORIGIN racattack.
 collabn-cluster-scan    A       192.168.78.251
                         A       192.168.78.252
