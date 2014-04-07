@@ -31,12 +31,10 @@ racattack               IN SOA  collabn1.racattack. hostmaster.racattack. (
                                 )
                         NS      collabn1.racattack.
                         NS      collabn2.racattack.
-collabn.racattack.      NS      collabn-cluster-gns.racattack.
 $ORIGIN racattack.
 collabn-cluster-scan    A       192.168.78.251
                         A       192.168.78.252
                         A       192.168.78.253
-collabn-cluster-gns     A       192.168.78.244
 collabn1                A       192.168.78.51
 collabn1-priv           A       172.16.100.51
 collabn1-vip            A       192.168.78.61
@@ -66,6 +64,9 @@ collaba2                A       192.168.78.92
 collaba3                A       192.168.78.93
 collaba4                A       192.168.78.94
 localhost               A       127.0.0.1
+$ORIGIN collabn.racattack.
+                        NS      collabn-cluster-gns.collabn.racattack.
+collabn-cluster-gns     A       192.168.78.244
 ' \
 > /var/named/racattack
 
@@ -90,6 +91,7 @@ $ORIGIN 78.168.192.in-addr.arpa.
 251                     PTR     collabn-cluster-scan.racattack.
 252                     PTR     collabn-cluster-scan.racattack.
 253                     PTR     collabn-cluster-scan.racattack.
+244			PTR	collabn-cluster-gns.collabn.racattack.
 51                      PTR     collabn1.racattack.
 52                      PTR     collabn2.racattack.
 53                      PTR     collabn3.racattack.
