@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 #############################
-## 20140331
+## 20140407
 ## Alvaro Miranda
 ## http://kikitux.net
 ## alvaro at kikitux.net
@@ -16,6 +16,9 @@ VAGRANTFILE_API_VERSION = "2"
 NUM_APPLICATION 	= 0
 NUM_LEAF_INSTANCES	= 0
 NUM_DB_INSTANCES	= 2
+#
+#define number of cores for guest
+NUM_CORE=1
 #
 #define memory for each type of node in MBytes
 #
@@ -80,7 +83,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   if File.directory?("12cR1")
     # our shared folder for oracle 12c installation files
-    config.vm.synced_folder "12cR1", "/media/sf_12cR1", :mount_options => ["dmode=555","fmode=444"]
+    config.vm.synced_folder "12cR1", "/media/sf_12cR1", :mount_options => ["dmode=775","fmode=664","uid=54320","gid=54321"]
     if File.file?("12cR1/linuxamd64_12c_grid_1of2.zip")
       config.vm.provision :shell, :inline => "sh /media/sf_12cR1/cvuqdisk_install.sh"
     end
@@ -111,7 +114,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
         vb.customize ["modifyvm", :id, "--memory", MEMORY_APPLICATION]
-        vb.customize ["modifyvm", :id, "--cpus", "2"]
+        vb.customize ["modifyvm", :id, "--cpus", NUM_CORE]
       end
       config.vm.network :private_network, ip: lanip
     end
@@ -130,7 +133,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
         vb.customize ["modifyvm", :id, "--memory", MEMORY_LEAF_INSTANCES]
-        vb.customize ["modifyvm", :id, "--cpus", "2"]
+        vb.customize ["modifyvm", :id, "--cpus", NUM_CORE]
       end
       config.vm.network :private_network, ip: lanip
       config.vm.network :private_network, ip: privip
@@ -150,7 +153,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
         vb.customize ["modifyvm", :id, "--memory", MEMORY_DB_INSTANCES]
-        vb.customize ["modifyvm", :id, "--cpus", "2"]
+        vb.customize ["modifyvm", :id, "--cpus", NUM_CORE]
         #first shared disk port
         port=2
         #how many shared disk
@@ -174,7 +177,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       if vm_name == "collabn1" 
         puts vm_name + " dns server role is master"
         config.vm.provision :shell, :inline => "sh /media/stagefiles/named_master.sh"
-        if ENV['setupssh'] and File.file?("12cR1/linuxamd64_12c_grid_1of2.zip")
+        if ENV['setup'] and File.file?("12cR1/linuxamd64_12c_grid_1of2.zip")
           setupssh="sh /media/sf_12cR1/sshUserSetup.sh #{nodes}"
           config.vm.provision :shell, :inline => setupssh
         end
