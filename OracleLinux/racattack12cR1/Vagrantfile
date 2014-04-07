@@ -59,6 +59,13 @@ nameserver 192.168.78.52
 search racattack
 EOF
 
+cat > /etc/hosts << EOF
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost6 localhost6.localdomain6
+
+EOF
+
+
 SCRIPT
 
 #variable used to provide information only once

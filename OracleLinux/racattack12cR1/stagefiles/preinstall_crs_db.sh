@@ -100,15 +100,15 @@ chmod -R    ug+rw               /u01
 [ -d /u01/stage/grid ] && chown -R grid:oinstall /u01/stage/grid
 
 #hostname need to be on /etc/hosts
+#
+#short=$(hostname -s)
+#grep $short /etc/hosts >/dev/null
+#if [ $? -ne 0 ]; then
+#  cp /etc/hosts /etc/hosts.ori
+#  cat > /etc/hosts << EOF
+#127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 $short
+#::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+#
+#EOF
 
-short=$(hostname -s)
-grep $short /etc/hosts >/dev/null
-if [ $? -ne 0 ]; then
-  cp /etc/hosts /etc/hosts.ori
-  cat > /etc/hosts << EOF
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 $short
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-EOF
-
-fi
+#fi
