@@ -14,7 +14,7 @@ chmod g+w /var/named/racattack
 cp /etc/named.conf /etc/named.conf.org
 
 
-grep '192.168.78.51' /etc/named.conf && echo "already configured " || sed -i -e 's/listen-on .*/listen-on port 53 { 192.168.78.51; };/' \
+grep '192.168.78.51' /etc/named.conf && echo "already configured " || sed -i -e 's/listen-on .*/listen-on port 53 { 192.168.78.51; 127.0.0.1; };/' \
 -e 's/allow-query .*/allow-query     { 192.168.78.0\/24; localhost; };\n        allow-transfer  { 192.168.78.0\/24; };/' \
 -e '$azone "racattack" {\n  type master;\n  file "racattack";\n};\n\nzone "in-addr.arpa" {\n  type master;\n  file "in-addr.arpa";\n};' \
 /etc/named.conf
