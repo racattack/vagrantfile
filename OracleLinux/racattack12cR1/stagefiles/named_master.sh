@@ -59,6 +59,21 @@ collabl3-vip            A       192.168.78.83
 collabl4                A       192.168.78.74
 collabl4-priv           A       172.16.100.74
 collabl4-vip            A       192.168.78.84
+collabl5                A       192.168.78.75
+collabl5-priv           A       172.16.100.75
+collabl5-vip            A       192.168.78.85
+collabl6                A       192.168.78.76
+collabl6-priv           A       172.16.100.76
+collabl6-vip            A       192.168.78.86
+collabl7                A       192.168.78.77
+collabl7-priv           A       172.16.100.77
+collabl7-vip            A       192.168.78.87
+collabl8                A       192.168.78.78
+collabl8-priv           A       172.16.100.78
+collabl8-vip            A       192.168.78.88
+collabl9                A       192.168.78.79
+collabl9-priv           A       172.16.100.79
+collabl9-vip            A       192.168.78.89
 collaba1                A       192.168.78.91
 collaba2                A       192.168.78.92
 collaba3                A       192.168.78.93
@@ -87,6 +102,15 @@ $ORIGIN 100.16.172.in-addr.arpa.
 52                      PTR     collabn2-priv.racattack.
 53                      PTR     collabn3-priv.racattack.
 54                      PTR     collabn4-priv.racattack.
+71                      PTR     collabl1-priv.racattack.
+72                      PTR     collabl2-priv.racattack.
+73                      PTR     collabl3-priv.racattack.
+74                      PTR     collabl4-priv.racattack.
+75                      PTR     collabl5-priv.racattack.
+76                      PTR     collabl6-priv.racattack.
+77                      PTR     collabl7-priv.racattack.
+78                      PTR     collabl8-priv.racattack.
+79                      PTR     collabl9-priv.racattack.
 $ORIGIN 78.168.192.in-addr.arpa.
 251                     PTR     collabn-cluster-scan.racattack.
 252                     PTR     collabn-cluster-scan.racattack.
@@ -108,6 +132,16 @@ $ORIGIN 78.168.192.in-addr.arpa.
 83                      PTR     collabl3-vip.racattack.
 74                      PTR     collabl4.racattack.
 84                      PTR     collabl4-vip.racattack.
+75                      PTR     collabl5.racattack.
+85                      PTR     collabl5-vip.racattack.
+76                      PTR     collabl6.racattack.
+86                      PTR     collabl6-vip.racattack.
+77                      PTR     collabl7.racattack.
+87                      PTR     collabl7-vip.racattack.
+78                      PTR     collabl8.racattack.
+88                      PTR     collabl8-vip.racattack.
+79                      PTR     collabl9.racattack.
+89                      PTR     collabl9-vip.racattack.
 91                      PTR     collaba1.racattack.
 92                      PTR     collaba2.racattack.
 93                      PTR     collaba3.racattack.
@@ -124,3 +158,5 @@ if [ ! -f /etc/rndc.key ] ; then
   service named restart || true
 fi
 
+# final command must return success or vagrant thinks the script failed
+echo "successfully completed named steps"

@@ -28,3 +28,6 @@ if [ ! -f /etc/rndc.key ] ; then
 else
   service named restart
 fi
+
+# final command must return success or vagrant thinks the script failed
+echo "successfully completed named steps"
