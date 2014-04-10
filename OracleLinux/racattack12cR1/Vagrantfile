@@ -5,12 +5,12 @@
 VAGRANTFILE_API_VERSION = "2"
 
 #############################
-## 20140407
+## 20140411
 ## Alvaro Miranda
 ## http://kikitux.net
 ## alvaro at kikitux.net
 #############################
-##### END CUSTOMIZATION #####
+##### BEGIN CUSTOMIZATION #####
 #############################
 #define number of nodes
 num_APPLICATION 	= 0
@@ -22,7 +22,7 @@ num_CORE=1
 #
 #define memory for each type of node in MBytes
 #
-#for leaf nodes, the minimun can be  2200, otherwise pre-check will fail for
+#for leaf nodes, the minimun can be  2300, otherwise pre-check will fail for
 #automatic ulimit values calculated based on ram
 #
 #for database nodes, the minimum suggested is 3072
@@ -62,7 +62,6 @@ EOF
 cat > /etc/hosts << EOF
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost6 localhost6.localdomain6
-
 EOF
 
 
