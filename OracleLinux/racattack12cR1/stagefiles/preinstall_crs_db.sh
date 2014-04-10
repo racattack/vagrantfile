@@ -44,7 +44,9 @@ else
   exit 1
 fi
 
-sed -i -e 's/Defaults\s*requiretty$/#Defaults\trequiretty/' /etc/sudoers
+cp /etc/sudoers /etc/sudoers.ori
+sed -i -e 's/^Defaults\s*requiretty$/#Defaults\trequiretty/' /etc/sudoers
+grep '^%oinstall' /etc/sudoers || echo '%oinstall        ALL=(ALL)       NOPASSWD: ALL' >> /etc/sudoers
 
 cp /etc/fstab /etc/fstab.ori
 

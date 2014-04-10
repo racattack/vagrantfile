@@ -13,7 +13,7 @@ chgrp named /var/named/racattack
 chmod g+w /var/named
 chmod g+w /var/named/racattack
 
-cp /etc/named.conf /etc/named.conf.org
+cp /etc/named.conf /etc/named.conf.ori
 
 grep '192.168.78.52' /etc/named.conf && echo "already configured " || sed -i -e 's/listen-on .*/listen-on port 53 { 192.168.78.52; 127.0.0.1; };/' \
 -e 's/allow-query .*/allow-query     { 192.168.78.0\/24; localhost; };/' -e 's/type master;/type slave;\n masters  {192.168.78.51; };/' \
