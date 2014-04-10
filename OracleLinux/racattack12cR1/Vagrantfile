@@ -13,12 +13,12 @@ VAGRANTFILE_API_VERSION = "2"
 ##### END CUSTOMIZATION #####
 #############################
 #define number of nodes
-NUM_APPLICATION 	= 0
-NUM_LEAF_INSTANCES	= 0
-NUM_DB_INSTANCES	= 2
+num_APPLICATION 	= 0
+num_LEAF_INSTANCES	= 0
+num_DB_INSTANCES	= 2
 #
 #define number of cores for guest
-NUM_CORE=1
+num_CORE=1
 #
 #define memory for each type of node in MBytes
 #
@@ -27,9 +27,9 @@ NUM_CORE=1
 #
 #for database nodes, the minimum suggested is 3072
 #
-MEMORY_APPLICATION 	= 1500
-MEMORY_LEAF_INSTANCES	= 2300
-MEMORY_DB_INSTANCES	= 3072
+memory_APPLICATION 	= 1500
+memory_LEAF_INSTANCES	= 2300
+memory_DB_INSTANCES	= 3072
 #        
 #size of shared disk in GB
 size_file_to_dbdisk	= 5
@@ -39,13 +39,13 @@ size_file_to_dbdisk	= 5
 #############################
 
 nodes=""
-(1..NUM_APPLICATION).each do |i|
+(1..num_APPLICATION).each do |i|
  nodes="collaba#{i} #{nodes}"
 end
-(1..NUM_LEAF_INSTANCES).each do |i|
+(1..num_LEAF_INSTANCES).each do |i|
  nodes="collabl#{i} #{nodes}"
 end
-(1..NUM_DB_INSTANCES).each do |i|
+(1..num_DB_INSTANCES).each do |i|
  nodes="collabn#{i} #{nodes}"
 end
 
@@ -111,9 +111,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   ## vagrant work up to down, high node goes first
   ## so when node 1 is ready, we can configure rac and all nodes will be up
 
-  (1..NUM_APPLICATION).each do |i|
+  (1..num_APPLICATION).each do |i|
     # this is to start machines higher to lower
-    i = NUM_APPLICATION+1-i
+    i = num_APPLICATION+1-i
     config.vm.define vm_name = "collaba%01d" % i do |config|
       puts " "
       config.vm.hostname = "#{vm_name}.racattack"
@@ -121,17 +121,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puts vm_name + " eth1 lanip  :" + lanip
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
-        vb.customize ["modifyvm", :id, "--memory", MEMORY_APPLICATION]
-        vb.customize ["modifyvm", :id, "--cpus", NUM_CORE]
+        vb.customize ["modifyvm", :id, "--memory", memory_APPLICATION]
+        vb.customize ["modifyvm", :id, "--cpus", num_CORE]
         vb.customize ["modifyvm", :id, "--groups", "/collab"]
       end
       config.vm.network :private_network, ip: lanip
     end
   end
 
-  (1..NUM_LEAF_INSTANCES).each do |i|
+  (1..num_LEAF_INSTANCES).each do |i|
     # this is to start machines higher to lower
-    i = NUM_LEAF_INSTANCES+1-i
+    i = num_LEAF_INSTANCES+1-i
     config.vm.define vm_name = "collabl%01d" % i do |config|
       puts " "
       config.vm.hostname = "#{vm_name}.racattack"
@@ -141,8 +141,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puts vm_name + " eth2 privip :" + privip
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
-        vb.customize ["modifyvm", :id, "--memory", MEMORY_LEAF_INSTANCES]
-        vb.customize ["modifyvm", :id, "--cpus", NUM_CORE]
+        vb.customize ["modifyvm", :id, "--memory", memory_LEAF_INSTANCES]
+        vb.customize ["modifyvm", :id, "--cpus", num_CORE]
         vb.customize ["modifyvm", :id, "--groups", "/collab"]
       end
       config.vm.network :private_network, ip: lanip
@@ -150,9 +150,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  (1..NUM_DB_INSTANCES).each do |i|
+  (1..num_DB_INSTANCES).each do |i|
     # this is to start machines higher to lower
-    i = NUM_DB_INSTANCES+1-i
+    i = num_DB_INSTANCES+1-i
     config.vm.define vm_name = "collabn%01d" % i do |config|
       puts " "
       config.vm.hostname = "#{vm_name}.racattack"
@@ -162,15 +162,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       puts vm_name + " eth2 privip :" + privip
       config.vm.provider :virtualbox do |vb|
         vb.name = vm_name + "." + Time.now.strftime("%y%m%d%H%M")
-        vb.customize ["modifyvm", :id, "--memory", MEMORY_DB_INSTANCES]
-        vb.customize ["modifyvm", :id, "--cpus", NUM_CORE]
+        vb.customize ["modifyvm", :id, "--memory", memory_DB_INSTANCES]
+        vb.customize ["modifyvm", :id, "--cpus", num_CORE]
         vb.customize ["modifyvm", :id, "--groups", "/collab"]
         #first shared disk port
         port=2
         #how many shared disk
         ["1","2","3","4"].each do |disk|
           file_to_dbdisk = "racattack-shared-disk#{disk}.vdi"
-          if !File.exist?(file_to_dbdisk) and NUM_DB_INSTANCES==i
+          if !File.exist?(file_to_dbdisk) and num_DB_INSTANCES==i
             unless give_info==false
               puts "on first boot shared disks will be created, this will take some time"
               give_info=false
