@@ -175,7 +175,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               puts "on first boot shared disks will be created, this will take some time"
               give_info=false
             end
-            vb.customize ['createhd', '--filename', file_to_dbdisk, '--size', size_file_to_dbdisk * 1024, '--variant', 'fixed']
+            vb.customize ['createhd', '--filename', file_to_dbdisk, '--size', (size_file_to_dbdisk * 1024).floor, '--variant', 'fixed']
             vb.customize ['modifyhd', file_to_dbdisk, '--type', 'shareable']
           end
           vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', port, '--device', 0, '--type', 'hdd', '--medium', file_to_dbdisk]
