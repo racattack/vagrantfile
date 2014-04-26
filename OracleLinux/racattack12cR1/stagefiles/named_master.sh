@@ -79,7 +79,7 @@ collaba3                A       192.168.78.93
 collaba4                A       192.168.78.94
 localhost               A       127.0.0.1
 $ORIGIN collabn.racattack.
-                        NS      collabn-cluster-gns.collabn.racattack.
+@                       NS      collabn-cluster-gns.collabn.racattack.
 collabn-cluster-gns     A       192.168.78.244
 ' \
 > /var/named/racattack

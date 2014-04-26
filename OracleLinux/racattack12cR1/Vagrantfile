@@ -100,9 +100,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   if File.directory?("12cR1")
     # our shared folder for oracle 12c installation files
     config.vm.synced_folder "12cR1", "/media/sf_12cR1", :mount_options => ["dmode=775","fmode=775","uid=54320","gid=54321"]
-    if File.file?("12cR1/linuxamd64_12c_grid_1of2.zip")
-      config.vm.provision :shell, :inline => "sh /media/sf_12cR1/cvuqdisk_install.sh"
-    end
   end
 
 
@@ -188,6 +185,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         puts vm_name + " dns server role is master"
         config.vm.provision :shell, :inline => "sh /media/stagefiles/named_master.sh"
         if ENV['setup'] and File.file?("12cR1/linuxamd64_12c_grid_1of2.zip")
+          config.vm.provision :shell, :inline => "sh /media/sf_12cR1/cvuqdisk_install.sh"
+	  config.vm.provision :shell, :inline => "unzip -o /media/sf_12cR1/linuxamd64_12c_grid_1of2.zip -d /u01/stage grid/sshsetup/sshUserSetup.sh"
           setupssh="sh /media/sf_12cR1/sshUserSetup.sh #{nodes}"
           config.vm.provision :shell, :inline => setupssh
         end
@@ -195,6 +194,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       if vm_name == "collabn2" 
         puts vm_name + " dns server role is slave"
         config.vm.provision :shell, :inline => "sh /media/stagefiles/named_slave.sh"
+        if ENV['setup'] and File.file?("12cR1/linuxamd64_12c_grid_1of2.zip")
+          config.vm.provision :shell, :inline => "sh /media/sf_12cR1/cvuqdisk_install.sh"
+        end
       end
     end
   end
